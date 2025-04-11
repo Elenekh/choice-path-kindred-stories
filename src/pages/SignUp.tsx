@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
@@ -18,8 +17,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BookOpen } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
+import { useAuth } from "@/App";
 
-// Form schema
 const formSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
   password: z.string().min(8, { message: "Password must be at least 8 characters" }),
@@ -32,6 +31,7 @@ const formSchema = z.object({
 const SignUp = () => {
   const [isParent, setIsParent] = useState(true);
   const navigate = useNavigate();
+  const { login } = useAuth();
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -43,16 +43,15 @@ const SignUp = () => {
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    // This is where you would typically integrate with your backend
     console.log(values, isParent ? "parent" : "child");
     
-    // For the prototype, just show a success message and redirect
+    login(isParent ? 'parent' : 'child');
+    
     toast({
       title: "Account created!",
       description: `You've successfully signed up as a ${isParent ? "parent" : "child"}.`,
     });
     
-    // Redirect to the appropriate dashboard
     setTimeout(() => {
       navigate(isParent ? "/parent" : "/child");
     }, 1500);

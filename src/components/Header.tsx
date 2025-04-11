@@ -12,20 +12,15 @@ const Header = () => {
           <span className="text-xl font-display font-semibold">Secretia</span>
         </Link>
         <div className="flex gap-4">
-          <Button asChild variant="ghost">
-            <Link to="/child" className="flex items-center gap-2">
-              <span>Child Portal</span>
+          <Button asChild variant="outline">
+            <Link to="/login" className="flex items-center gap-2">
+              <LogIn className="h-4 w-4" />
+              <span>Log In</span>
             </Link>
           </Button>
           <Button asChild>
-            <Link to="/parent" className="flex items-center gap-2">
-              <User className="h-4 w-4" />
-              <span>Parent Dashboard</span>
-            </Link>
-          </Button>
-          <Button asChild variant="outline">
             <Link to="/signup" className="flex items-center gap-2">
-              <LogIn className="h-4 w-4" />
+              <User className="h-4 w-4" />
               <span>Sign Up</span>
             </Link>
           </Button>

@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpen } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
+import { useAuth } from "@/App";
 
 // Form schema
 const formSchema = z.object({
@@ -25,6 +26,7 @@ const formSchema = z.object({
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -40,6 +42,9 @@ const Login = () => {
     
     // Mock login logic for prototype
     const isParentEmail = values.email.includes("parent") || !values.email.includes("child");
+    
+    // Log in the user
+    login(isParentEmail ? 'parent' : 'child');
     
     // Show success message
     toast({
