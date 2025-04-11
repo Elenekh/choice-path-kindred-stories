@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { BookOpenCheck, BarChart3, RefreshCcw, FileSearch } from "lucide-react";
+import { BookOpenCheck, FileSearch, RefreshCcw } from "lucide-react";
 
 const ParentDashboard = () => {
   return (
@@ -83,58 +83,33 @@ const ParentDashboard = () => {
               </Card>
             </div>
             
-            {/* Main content */}
+            {/* Main content - AI Report only, removed behavioral trends */}
             <div className="md:col-span-2">
-              <Tabs defaultValue="report" className="w-full">
-                <TabsList className="grid w-full grid-cols-2 mb-8">
-                  <TabsTrigger value="report" className="flex items-center gap-2">
-                    <FileSearch className="h-4 w-4" />
-                    <span>AI Report</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="trends" className="flex items-center gap-2">
-                    <BarChart3 className="h-4 w-4" />
-                    <span>Behavioral Trends</span>
-                  </TabsTrigger>
-                </TabsList>
-                
-                <TabsContent value="report">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>AI-Generated Insights</CardTitle>
-                      <CardDescription>Based on your child's story choices and responses</CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-6">
-                      <div className="p-8 rounded-lg bg-story-soft flex flex-col items-center justify-center min-h-[300px]">
-                        <RefreshCcw className="h-12 w-12 text-muted-foreground mb-4 animate-spin" />
-                        <h3 className="text-xl font-semibold mb-2">Generating Insights</h3>
-                        <p className="text-center text-muted-foreground">
-                          Our AI is analyzing your child's responses to generate personalized insights.
-                          This process helps identify behavioral patterns and emotional tendencies.
-                        </p>
-                      </div>
-                      
-                      <div className="bg-muted p-4 rounded-lg">
-                        <h3 className="font-semibold mb-2">About AI-Generated Reports</h3>
-                        <p className="text-sm text-muted-foreground">
-                          These reports use advanced AI to analyze your child's story choices and reflective answers.
-                          They provide observations about potential behavioral traits, not clinical diagnoses.
-                          Reports are generated securely with complete privacy protection.
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </TabsContent>
-                
-                <TabsContent value="trends">
-                  <Card className="p-8 text-center">
-                    <h3 className="text-xl font-semibold mb-4">Behavioral Trends Coming Soon</h3>
-                    <p className="text-muted-foreground">
-                      This feature will be available once your child completes more stories, 
-                      allowing us to track changes and patterns over time.
+              <Card>
+                <CardHeader>
+                  <CardTitle>AI-Generated Insights</CardTitle>
+                  <CardDescription>Based on your child's story choices and responses</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="p-8 rounded-lg bg-story-soft flex flex-col items-center justify-center min-h-[300px]">
+                    <RefreshCcw className="h-12 w-12 text-muted-foreground mb-4 animate-spin" />
+                    <h3 className="text-xl font-semibold mb-2">Generating Insights</h3>
+                    <p className="text-center text-muted-foreground">
+                      Our AI is analyzing your child's responses to generate personalized insights.
+                      This process helps identify behavioral patterns and emotional tendencies.
                     </p>
-                  </Card>
-                </TabsContent>
-              </Tabs>
+                  </div>
+                  
+                  <div className="bg-muted p-4 rounded-lg">
+                    <h3 className="font-semibold mb-2">About AI-Generated Reports</h3>
+                    <p className="text-sm text-muted-foreground">
+                      These reports use advanced AI to analyze your child's story choices and reflective answers.
+                      They provide observations about potential behavioral traits, not clinical diagnoses.
+                      Reports are generated securely with complete privacy protection.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>

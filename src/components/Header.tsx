@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { BookOpen, User } from "lucide-react";
+import { BookOpen, User, LogIn } from "lucide-react";
 
 const Header = () => {
   return (
@@ -21,6 +21,12 @@ const Header = () => {
             <Link to="/parent" className="flex items-center gap-2">
               <User className="h-4 w-4" />
               <span>Parent Dashboard</span>
+            </Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link to="/signup" className="flex items-center gap-2">
+              <LogIn className="h-4 w-4" />
+              <span>Sign Up</span>
             </Link>
           </Button>
         </div>
