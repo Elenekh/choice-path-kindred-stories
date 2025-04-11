@@ -11,23 +11,32 @@ const Home = () => {
       <Header />
       
       <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-b from-story-soft to-white py-20">
+        {/* Hero Section with forest background */}
+        <section 
+          className="py-20 bg-cover bg-center text-white"
+          style={{ 
+            backgroundImage: "url('https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1600&q=80')", 
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        >
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-story-primary">
-              Discover Your Child's Mind
-            </h1>
-            <p className="text-xl max-w-2xl mx-auto mb-8">
-              Interactive stories that help children express emotions while giving parents 
-              valuable psychological insights.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-story-primary hover:bg-story-vivid">
-                <Link to="/child">Start a Story</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link to="/parent">Parent Dashboard</Link>
-              </Button>
+            <div className="backdrop-blur-sm bg-black/30 p-8 rounded-xl max-w-2xl mx-auto">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+                Discover Your Child's Mind
+              </h1>
+              <p className="text-xl max-w-2xl mx-auto mb-8">
+                Interactive stories that help children express emotions while giving parents 
+                valuable psychological insights.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button asChild size="lg" className="bg-story-primary hover:bg-story-vivid">
+                  <Link to="/child">Start a Story</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white/20">
+                  <Link to="/parent">Parent Dashboard</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
@@ -81,18 +90,26 @@ const Home = () => {
           </div>
         </section>
         
-        {/* CTA Section */}
-        <section className="bg-story-primary py-16">
+        {/* CTA Section with forest background */}
+        <section 
+          className="py-16 bg-cover bg-center text-white"
+          style={{ 
+            backgroundImage: "url('https://images.unsplash.com/photo-1500673922987-e212871fec22?auto=format&fit=crop&w=1600&q=80')", 
+            backgroundSize: 'cover'
+          }}
+        >
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold text-white mb-6">
-              Begin Your Journey Today
-            </h2>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-              Discover your child's emotional world through the power of interactive storytelling.
-            </p>
-            <Button asChild size="lg" variant="secondary">
-              <Link to="/child">Start Your First Story</Link>
-            </Button>
+            <div className="backdrop-blur-sm bg-black/30 p-8 rounded-xl max-w-2xl mx-auto">
+              <h2 className="text-3xl font-bold text-white mb-6">
+                Begin Your Journey Today
+              </h2>
+              <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
+                Discover your child's emotional world through the power of interactive storytelling.
+              </p>
+              <Button asChild size="lg" variant="secondary">
+                <Link to="/child">Start Your First Story</Link>
+              </Button>
+            </div>
           </div>
         </section>
       </main>

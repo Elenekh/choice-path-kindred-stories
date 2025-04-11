@@ -1,62 +1,12 @@
 
-import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ParentInsightReport from "@/components/ParentInsightReport";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { BookOpen, BookOpenCheck, BarChart3 } from "lucide-react";
-
-// Mock data for parent dashboard
-const mockChildData = {
-  name: "Alex",
-  age: 10,
-  completedStories: [
-    {
-      id: "story1",
-      title: "The Lost Treasure",
-      completionDate: "April 10, 2025",
-      traits: [
-        { 
-          name: "Empathy", 
-          value: 75, 
-          description: "Shows strong ability to understand others' feelings" 
-        },
-        { 
-          name: "Caution", 
-          value: 60, 
-          description: "Tends to consider potential risks before acting" 
-        },
-        { 
-          name: "Social Interest", 
-          value: 85, 
-          description: "Highly interested in social connection and cooperation" 
-        },
-        { 
-          name: "Adventure", 
-          value: 45, 
-          description: "Moderate interest in new experiences and challenges" 
-        },
-      ],
-      observations: [
-        "Tends to consider others' feelings when making decisions",
-        "Shows preference for cooperation over individual achievement",
-        "Evaluates risks but is willing to try new experiences",
-        "Values friendships and social connections highly"
-      ],
-      reflections: {
-        "Have you ever found something unexpected that made you happy?": "Yes, I found a bird nest in our backyard and watched the baby birds grow up. It wasn't what I expected but it made me really happy to see them learn to fly.",
-        "Do you prefer exploring with friends or by yourself?": "I like having friends with me because it's more fun to share discoveries and they might see things I miss.",
-        "What's the most interesting place you've discovered?": "There's a hollow tree in the park that has all kinds of interesting bugs and plants growing inside it. It's like a tiny ecosystem!"
-      }
-    }
-  ]
-};
+import { BookOpenCheck, BarChart3, RefreshCcw, FileSearch } from "lucide-react";
 
 const ParentDashboard = () => {
-  const [activeStory, setActiveStory] = useState(mockChildData.completedStories[0]);
-
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -80,15 +30,15 @@ const ParentDashboard = () => {
                   <div className="space-y-4">
                     <div>
                       <p className="font-medium">Name</p>
-                      <p className="text-muted-foreground">{mockChildData.name}</p>
+                      <p className="text-muted-foreground">Alex</p>
                     </div>
                     <div>
                       <p className="font-medium">Age</p>
-                      <p className="text-muted-foreground">{mockChildData.age} years old</p>
+                      <p className="text-muted-foreground">10 years old</p>
                     </div>
                     <div>
                       <p className="font-medium">Stories Completed</p>
-                      <p className="text-muted-foreground">{mockChildData.completedStories.length}</p>
+                      <p className="text-muted-foreground">1</p>
                     </div>
                   </div>
                 </CardContent>
@@ -101,23 +51,17 @@ const ParentDashboard = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {mockChildData.completedStories.map((story) => (
-                      <div 
-                        key={story.id}
-                        className="bg-story-soft hover:bg-story-soft/80 p-4 rounded-lg cursor-pointer"
-                        onClick={() => setActiveStory(story)}
-                      >
-                        <div className="flex items-start gap-3">
-                          <BookOpenCheck className="text-story-primary h-5 w-5 mt-1" />
-                          <div>
-                            <p className="font-medium">{story.title}</p>
-                            <p className="text-sm text-muted-foreground">
-                              Completed on {story.completionDate}
-                            </p>
-                          </div>
+                    <div className="bg-story-soft hover:bg-story-soft/80 p-4 rounded-lg cursor-pointer">
+                      <div className="flex items-start gap-3">
+                        <BookOpenCheck className="text-story-primary h-5 w-5 mt-1" />
+                        <div>
+                          <p className="font-medium">The Lost Treasure</p>
+                          <p className="text-sm text-muted-foreground">
+                            Completed on April 10, 2025
+                          </p>
                         </div>
                       </div>
-                    ))}
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -144,8 +88,8 @@ const ParentDashboard = () => {
               <Tabs defaultValue="report" className="w-full">
                 <TabsList className="grid w-full grid-cols-2 mb-8">
                   <TabsTrigger value="report" className="flex items-center gap-2">
-                    <BookOpen className="h-4 w-4" />
-                    <span>Story Report</span>
+                    <FileSearch className="h-4 w-4" />
+                    <span>AI Report</span>
                   </TabsTrigger>
                   <TabsTrigger value="trends" className="flex items-center gap-2">
                     <BarChart3 className="h-4 w-4" />
@@ -154,14 +98,31 @@ const ParentDashboard = () => {
                 </TabsList>
                 
                 <TabsContent value="report">
-                  <ParentInsightReport
-                    childName={mockChildData.name}
-                    storyTitle={activeStory.title}
-                    completionDate={activeStory.completionDate}
-                    traits={activeStory.traits}
-                    observations={activeStory.observations}
-                    reflections={activeStory.reflections}
-                  />
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>AI-Generated Insights</CardTitle>
+                      <CardDescription>Based on your child's story choices and responses</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-6">
+                      <div className="p-8 rounded-lg bg-story-soft flex flex-col items-center justify-center min-h-[300px]">
+                        <RefreshCcw className="h-12 w-12 text-muted-foreground mb-4 animate-spin" />
+                        <h3 className="text-xl font-semibold mb-2">Generating Insights</h3>
+                        <p className="text-center text-muted-foreground">
+                          Our AI is analyzing your child's responses to generate personalized insights.
+                          This process helps identify behavioral patterns and emotional tendencies.
+                        </p>
+                      </div>
+                      
+                      <div className="bg-muted p-4 rounded-lg">
+                        <h3 className="font-semibold mb-2">About AI-Generated Reports</h3>
+                        <p className="text-sm text-muted-foreground">
+                          These reports use advanced AI to analyze your child's story choices and reflective answers.
+                          They provide observations about potential behavioral traits, not clinical diagnoses.
+                          Reports are generated securely with complete privacy protection.
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </TabsContent>
                 
                 <TabsContent value="trends">

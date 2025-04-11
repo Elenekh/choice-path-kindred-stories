@@ -9,7 +9,7 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2">
           <BookOpen className="h-6 w-6 text-story-primary" />
-          <span className="text-xl font-display font-semibold">KindredStories</span>
+          <span className="text-xl font-display font-semibold">Secretia</span>
         </Link>
         <div className="flex gap-4">
           <Button asChild variant="ghost">
