@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState, createContext, useContext } from "react";
 import Home from "./pages/Home";
 import ChildPortal from "./pages/ChildPortal";
+import ChildLanding from "./pages/ChildLanding";
 import ParentDashboard from "./pages/ParentDashboard";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -82,6 +83,11 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/child-landing" element={
+                <ProtectedRoute allowedUserType="child">
+                  <ChildLanding />
+                </ProtectedRoute>
+              } />
               <Route path="/child" element={
                 <ProtectedRoute allowedUserType="child">
                   <ChildPortal />

@@ -54,7 +54,12 @@ const Login = () => {
     
     // Redirect to the appropriate dashboard
     setTimeout(() => {
-      navigate(isParentEmail ? "/parent" : "/child");
+      if (isParentEmail) {
+        navigate("/parent");
+      } else {
+        // Children go to story selection landing page
+        navigate("/child-landing");
+      }
     }, 1500);
   };
 
